@@ -36,3 +36,4 @@ The organization of the project is the following :
 - templates : All the HTML pages of the project
 - tmp : Temporary files (i.e. an image from video interview, an audio file or a PDF)
 - main.py : The Flask page that calls the functions and redirects to HTML files
+"# MockMate_Testing" 
