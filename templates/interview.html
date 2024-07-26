@@ -25,7 +25,7 @@
         font-family: "M PLUS Rounded 1c", cursive;
       }
       .sideBot-img {
-        width: 24rem; /* Adjust width as needed */
+        max-width: 100%;
         height: auto;
       }
       .btn-dark {
@@ -41,32 +41,81 @@
         color: #fff;
       }
       .navbar {
-        background-color: #e5e8eb; /* Adjust as needed */
+        background-color: #e5e8eb;
       }
       .navbar-brand img {
-        height: 50px; /* Adjust as needed */
+        height: 50px;
       }
       .footer {
-        background-color: #343a40; /* Dark background for the footer */
-        color: #f8f9fa; /* Light color for the footer text */
+        background-color: #343a40;
+        color: #f8f9fa;
       }
       .footer-heading {
         font-weight: bold;
-        font-size: 1rem; /* Adjusted font size for headings */
+        font-size: 1rem;
       }
       .footer-text {
-        font-size: 0.875rem; /* Smaller font size for text */
+        font-size: 0.875rem;
         margin: 0;
       }
       .footer a {
-        color: #f8f9fa; /* Light color for the links */
+        color: #f8f9fa;
       }
       .footer a:hover {
-        text-decoration: underline; /* Underline links on hover */
+        text-decoration: underline;
       }
       .footer p {
         margin: 0;
-        font-size: 0.875rem; /* Adjusted font size for overall text */
+        font-size: 0.875rem;
+      }
+      .sideBot-container {
+        position: fixed;
+        right: 0;
+        top: 100px;
+        bottom: 40px;
+        transform: translateX(10%);
+        max-width: 250px;
+        width: 100%;
+      }
+      .video-section {
+        margin: 100px 10px;
+        position: relative;
+        text-align: center;
+      }
+      .button-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      @media (max-width: 768px) {
+        .video-section {
+          margin: 60px 10px;
+        }
+        .sideBot-container {
+          display: none;
+        }
+        .button-group {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .fs-4 {
+          width: 100%;
+        }
+      }
+      @media (max-width: 576px) {
+        .navbar-brand img {
+          height: 40px;
+        }
+        .font-link {
+          font-size: 1.5rem;
+        }
+        .footer-heading {
+          font-size: 0.875rem;
+        }
+        .footer-text {
+          font-size: 0.75rem;
+        }
       }
     </style>
   </head>
@@ -101,54 +150,49 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="container my-5">
-      <div class="d-flex mb-5">
-        <div class="w-100 p-5 m-5" style="margin: 150px 100px 220px 220px">
-          <h1
-            class="display-2 font-link"
-            style="font-weight: bolder; margin-bottom: 60px"
-          >
-            Video Interview
-          </h1>
-          <div class="fs-4 mb-5" style="width: 60%">
-            <p>
-              Use the video interview simulator and get feedback on how our
-              algorithm interprets your facial emotions compared to other
-              candidates.
-            </p>
-            <br />
-            <p style="font-weight: lighter">
-              You will be provided feedback on your facial emotions such as:
-            </p>
-            <br />
-            <p style="font-weight: lighter">
-              Anger | Happiness | Fear | Sadness | Surprise | Disgust
-            </p>
-          </div>
-          <br />
-          <br />
-          <div class="d-flex gap-10">
-            <div class="column_home" id="left-col" align="center">
-              <form action="/video" method="post" align="center">
-                <input
-                  type="submit"
-                  name="video"
-                  value="Video Interview"
-                  class="btn btn-dark px-3 mr-4 py-2"
-                  style="margin: 20px"
-                />
-              </form>
-            </div>
-            <a href="/video_dash" class="btn btn-outline-dark py-2">Result</a>
-          </div>
-        </div>
-        <div class="sideBot-img">
-          <img
-            src="{{ url_for('static', filename='images/sideBot.svg') }}"
-            class="w-100 h-100"
-            alt="Side Bot"
+    <div class="video-section">
+      <h1
+        class="display-2 font-link"
+        style="font-weight: bolder; margin-bottom: 60px"
+      >
+        Video Interview
+      </h1>
+      <div class="fs-4 mb-5">
+        <p>
+          Use the video interview simulator and get feedback on how our
+          algorithm interprets your facial emotions compared to other
+          candidates.
+        </p>
+        <br />
+        <p style="font-weight: lighter">
+          You will be provided feedback on your facial emotions such as:
+        </p>
+        <br />
+        <p style="font-weight: lighter">
+          Anger | Happiness | Fear | Sadness | Surprise | Disgust
+        </p>
+      </div>
+      <br />
+      <br />
+      <div class="button-group">
+        <form action="/video" method="post">
+          <input
+            type="submit"
+            name="video"
+            value="Video Interview"
+            class="btn btn-dark px-3 py-2"
           />
-        </div>
+        </form>
+        <a href="/video_dash" class="btn btn-outline-dark py-2">Result</a>
+      </div>
+
+      <!-- SideBot Image -->
+      <div class="sideBot-container">
+        <img
+          src="{{ url_for('static', filename='assets/images/sideBot.svg') }}"
+          alt="SideBot"
+          class="sideBot-img"
+        />
       </div>
     </div>
 
@@ -171,10 +215,7 @@
                 >contact@aiinterview.com</a
               ><br />
               Follow us on:
-              <a
-                href="https://github.com/aryasoni98/AI-Interview"
-                target="_blank"
-                class="text-white"
+              <a href="https://github.com/" target="_blank" class="text-white"
                 >GitHub</a
               >
               |

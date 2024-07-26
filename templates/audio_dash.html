@@ -10,35 +10,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
     <title>Audio Dashboard</title>
     <style>
-      /* Basic Reset */
-      body,
-      h2,
-      p,
-      ul {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+      /* Basic styles */
       body {
+        margin: 0;
         font-family: Arial, sans-serif;
-        line-height: 1.6;
         padding: 20px;
       }
+
       .row {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-        margin: 20px 0;
+        margin: 0 -15px;
       }
+
       .column {
-        flex: 1;
-        max-width: 500px;
-        padding: 10px;
+        flex: 50%;
+        padding: 15px;
       }
+
       .legend1 p {
         margin: 0;
         font-size: 14px;
       }
+
       .key-dot {
         display: inline-block;
         width: 10px;
@@ -46,45 +40,74 @@
         border-radius: 50%;
         margin-right: 5px;
       }
+
       .you {
         background-color: #1f77b4;
       }
+
       .others {
         background-color: #ff7f0e;
       }
+
       .parent ul {
         list-style: none;
         padding: 0;
       }
+
       .parent li {
         padding: 5px 0;
       }
+
       .form-button {
         display: block;
         margin: 20px auto;
         padding: 10px 20px;
         font-size: 16px;
       }
-      /* Responsive Design */
+
+      iframe {
+        width: 100%;
+        max-width: 1300px;
+        height: 500px;
+      }
+
+      /* Responsive styles */
       @media (max-width: 768px) {
         .row {
           flex-direction: column;
         }
+
         .column {
           max-width: 100%;
         }
-      }
-      @media (max-width: 480px) {
+
         .key-dot {
           width: 8px;
           height: 8px;
         }
+
         .legend1 p {
           font-size: 12px;
         }
+
         .parent li {
           font-size: 14px;
         }
+
+        .form-button {
+          font-size: 14px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .legend1 p {
+          font-size: 12px;
+        }
+
+        .parent li {
+          font-size: 12px;
+        }
+
         .form-button {
           font-size: 14px;
         }
@@ -92,8 +115,17 @@
     </style>
   </head>
   <body>
+    <a href="/">
+      <img
+        src="/static/images/interview/audio_interview.png"
+        style="width: 100%"
+        alt="Header Image"
+      />
+    </a>
+
     <br />
     <br />
+
     {% block body %}
     <div class="row">
       <h2><i>Perceived emotions</i></h2>
@@ -170,8 +202,6 @@
         <br />
       </div>
     </div>
-    <script type="text/javascript" src="/static/js/hist_aud_perso.js"></script>
-    <script type="text/javascript" src="/static/js/hist_aud_glob.js"></script>
     <br />
     <br />
     <br />
@@ -184,6 +214,8 @@
         onclick="history.go(-1)"
       />
     </form>
+    <script type="text/javascript" src="/static/js/hist_aud_perso.js"></script>
+    <script type="text/javascript" src="/static/js/hist_aud_glob.js"></script>
     {% endblock %}
   </body>
 </html>
